@@ -1,4 +1,4 @@
 fastapi==0.95.0
 uvicorn==0.21.1
 selenium==4.8.0
-bs4==4.11.2
+bs4==0.0.1
