@@ -23,17 +23,17 @@ async def myData(city):
     resNum = 0
     while resNum<num:
         url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/page-'+str(page)+'/'
-        driver.maximize_window()
-        driver.get(url)
+        await driver.maximize_window()
+        await driver.get(url)
         time.sleep(2)
-        content = driver.page_source.encode('utf-8').strip()
+        content = await driver.page_source.encode('utf-8').strip()
         soup = BeautifulSoup(content,"lxml")
-        firstRes = soup.find_all("div" , class_="feature-column")
+        firstRes = await soup.find_all("div" , class_="feature-column")
         for res in firstRes:
-            name = res.find("div", class_="rest-title").text
+            name = await res.find("div", class_="rest-title").text
             resNum+=1
             print(name+" res num: ",resNum)
-            telegramBot.newMessage(name)
+            await telegramBot.newMessage(name)
             time.sleep(1)
         page+=1
     telegramBot.newMessage('covered all data!')
