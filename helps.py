@@ -29,7 +29,7 @@ async def myData(city):
     print(url)
     time.sleep(3)
     driver.maximize_window()
-    driver.get(url)
+    await driver.get(url)
     time.sleep(2)
     # content = driver.page_source.encode('utf-8').strip()
     # soup = BeautifulSoup(content,"lxml")
