@@ -14,7 +14,7 @@ async def myData(city):
     chrome_options.add_argument("--start-maximized")
     chrome_options.binary_location = CHROME_PATH
 
-    driver = webdriver.Chrome(executable_path=CHROME_PATH,
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,
                     options=chrome_options)
     #driver = webdriver.Chrome()
     url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/'
