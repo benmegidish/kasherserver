@@ -2,6 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import helps
+import requests
+from flask import request
+from pydantic import BaseModel
 
 app = FastAPI()
 origins = [
@@ -15,16 +18,20 @@ app.add_middleware(
     allow_headers = ["*"]
 )
 
+class City(BaseModel):
+    name : str
+
 @app.get('/')
 def test():
     return ('Hello there')
-@app.route('/{city}',methods=["POST"])
-async def getCity(city:str):
-    # print('City selected: ',city)
-    print("hey1")
-    print(city)
-    print("hey2")
+@app.post("/data/")
+async def getCity(city:City):
+    print(city.name)
     res = await helps.myData(city)
     return res
+    
+
+
+
 if __name__== '__main__':
     uvicorn.run(app,port=5000,host="127.0.0.1")
