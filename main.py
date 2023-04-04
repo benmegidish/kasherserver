@@ -18,7 +18,7 @@ app.add_middleware(
 @app.get('/')
 def test():
     return ('Hello there')
-@app.post('/{city}')
+@app.route('/{city}',methods=["POST"])
 async def getCity(city:str):
     print('City selected: '+city)
     res = await helps.myData(city)
