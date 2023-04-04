@@ -19,7 +19,7 @@ app.add_middleware(
 def test():
     return ('Hello there')
 @app.post('/{city}')
-def getCity(city:str):
+async def getCity(city:str):
     city = city
     print('City selected: '+city)
     helps.myData(city)
