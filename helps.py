@@ -29,8 +29,9 @@ async def myData(city):
     print(url)
     time.sleep(3)
     driver.maximize_window()
-    await driver.get(url)
+    #await driver.get(url)
     time.sleep(2)
+    telegramBot.newMessage("line 34")
     # content = driver.page_source.encode('utf-8').strip()
     # soup = BeautifulSoup(content,"lxml")
     # numOfResualts = soup.find('div' ,class_ = 'restaurant-info-top').text
