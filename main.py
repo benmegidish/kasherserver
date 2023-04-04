@@ -20,7 +20,6 @@ def test():
     return ('Hello there')
 @app.route('/{city}',methods=['POST'])
 async def getCity(city):
-    city = str(city)
     print('City selected: '+city)
     res = await helps.myData(city)
     return res
