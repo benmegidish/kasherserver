@@ -1,8 +1,12 @@
+
+
+
 async def myData(city):
     from selenium import webdriver
     import time
     from bs4 import BeautifulSoup
     import telegramBot
+    import os
     
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -12,7 +16,7 @@ async def myData(city):
     chrome_options.add_argument("--no-sandbox")
 
     driver=webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
-    driver = webdriver.Chrome()
+    # driver = webdriver.Chrome()
     url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/'
     print(url)
     time.sleep(3)
