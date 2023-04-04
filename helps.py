@@ -38,4 +38,5 @@ async def myData(city):
         page+=1
     telegramBot.newMessage('covered all data!')
     driver.quit()
+    return("done")
 
