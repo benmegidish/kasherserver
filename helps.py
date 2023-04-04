@@ -22,7 +22,7 @@ async def myData(city):
                 # "resolution": "1280X720"
                 "resolution": "768X432"
    }
-    driver = webdriver.Chrome(options=chrome_options,desired_capabilities=capabilities)
+    driver = webdriver.Chrome(executable_path= os.getenv("CHROMEDRIVER_PATH"),options=chrome_options,desired_capabilities=capabilities)
     #driver=webdriver.Chrome(executable_path= os.getenv("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
     # driver = webdriver.Chrome()
     url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/'
