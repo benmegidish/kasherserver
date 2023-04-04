@@ -1,4 +1,4 @@
-def myData(city):
+async def myData(city):
     from selenium import webdriver
     import time
     from bs4 import BeautifulSoup
@@ -7,12 +7,12 @@ def myData(city):
     url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/'
     print(url)
     time.sleep(3)
-    driver.maximize_window()
-    driver.get(url)
+    await driver.maximize_window()
+    await driver.get(url)
     time.sleep(2)
     content = driver.page_source.encode('utf-8').strip()
     soup = BeautifulSoup(content,"lxml")
-    numOfResualts = soup.find('div' ,class_ = 'restaurant-info-top').text
+    numOfResualts = await soup.find('div' ,class_ = 'restaurant-info-top').text
     sliceit = slice(6,10)
     num =int(numOfResualts[sliceit].replace(' ',''))
     if num>20:
