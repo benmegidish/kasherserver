@@ -26,8 +26,9 @@ def test():
     return ('Hello there')
 @app.post("/data/")
 async def getCity(city:City):
-    print(str(city.name))
-    res = await helps.myData(str(city.name))
+    cityName = str(city.name)
+    print(cityName)
+    res = await helps.myData(cityName)
     return res
     
     
