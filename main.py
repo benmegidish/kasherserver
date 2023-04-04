@@ -19,10 +19,10 @@ app.add_middleware(
 def test():
     return ('Hello there')
 @app.post('/{city}')
-async def getCity(city:str):
+def getCity(city:str):
     city = city
     print('City selected: '+city)
-    await helps.myData(city)
+    helps.myData(city)
 
 if __name__== '__main__':
     uvicorn.run(app,port=5000,host="127.0.0.1")
