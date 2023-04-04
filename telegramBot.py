@@ -8,4 +8,4 @@ def newMessage(message):
     url = os.getenv('telgramBase_url')
     base_url = f'{url}{chatId}&text="{message}"'
     requests.get(base_url)
- 
+  
