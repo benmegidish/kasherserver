@@ -11,7 +11,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins = origins,
     allow_credentials= True,
-    allow_headers = ["*"]
+    allow_headers = ["*"],
+    allow_methods = ["*"]
 )
 
 @app.get('/')
@@ -24,4 +25,4 @@ def getCity(city:str):
     helps.myData(city)
 
 if __name__== '__main__':
-    uvicorn.run(app,port=5000,host="127.0.0.1")
+    uvicorn.run(app,port=5000,host="0.0.0.0")
