@@ -5,6 +5,8 @@ def myData(city):
     import telegramBot
     driver = webdriver.Chrome()
     url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/'
+    print(url)
+    time.sleep(3)
     driver.maximize_window()
     driver.get(url)
     time.sleep(2)
