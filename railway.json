@@ -6,5 +6,8 @@
     },
     "deploy": {
       "restartPolicyType": "ALWAYS"
+    },
+    "caching":{
+      "install":"~/.cache/pip"
     }
   }
