@@ -5,7 +5,7 @@ import helps
 
 app = FastAPI()
 origins = [
-    'https://localhost:3000'
+    'https://kaherclient.netlify.app/'
 ]
 app.add_middleware(
     CORSMiddleware,
