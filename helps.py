@@ -11,7 +11,7 @@ async def myData(city):
 
     load_dotenv()
     
-    
+    telegramBot.newMessage("Started")
     #chrome_options.binary_location = os.getenv("GOOGLE_CHROME_BIN")
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--headless")
