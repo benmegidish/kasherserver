@@ -3,7 +3,20 @@ async def myData(city):
     import time
     from bs4 import BeautifulSoup
     import telegramBot
-    driver = webdriver.Chrome()
+    CHROME_PATH = '/usr/lib/chromium-browser/chromium-browser'
+    CHROMEDRIVER_PATH = '/usr/lib/chromium-browser/chromedriver'
+
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--headless")
+    #chrome_options.add_argument("--remote-debugging-port=9222 https://chromium.org")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--start-maximized")
+    chrome_options.binary_location = CHROME_PATH
+
+    driver = webdriver.Chrome(executable_path=CHROME_PATH,
+                    options=chrome_options)
+    #driver = webdriver.Chrome()
     url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/'
     print(url)
     time.sleep(3)
