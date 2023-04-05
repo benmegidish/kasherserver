@@ -41,4 +41,3 @@ def myData(city):
     telegramBot.newMessage('covered all data!')
     driver.quit()
 
-myData("kiryat-gat")
