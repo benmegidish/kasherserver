@@ -1,10 +1,15 @@
-async def myData(city):
+
+def myData(city):
+
     from selenium import webdriver
     import time
     from bs4 import BeautifulSoup
     import telegramBot
-        
-    driver = webdriver.Chrome()
+    from dotenv import load_dotenv
+    import os
+
+    load_dotenv()
+    driver = webdriver.Chrome(executable_path=os.getenv("EXECUTABLE_PATH"))
     url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/'
     driver.maximize_window()
     driver.get(url)
@@ -17,9 +22,6 @@ async def myData(city):
     print("There are "+str(num)+" resualts found...")
     time.sleep(1)
     page = 1
-    if num>20:
-        telegramBot.newMessage("too much data... showing about 30 random resaults!")
-        num=20
     resNum = 0
     while resNum<num:
         url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/page-'+str(page)+'/'
@@ -36,6 +38,7 @@ async def myData(city):
             telegramBot.newMessage(name)
             time.sleep(1)
         page+=1
-
     telegramBot.newMessage('covered all data!')
     driver.quit()
+
+myData("kiryat-gat")
