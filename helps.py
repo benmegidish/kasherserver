@@ -36,5 +36,3 @@ def myData(city):
             time.sleep(1)
         page+=1
     telegramBot.newMessage('covered all data!')
-
-myData("tel-aviv")
