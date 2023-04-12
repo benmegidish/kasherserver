@@ -28,8 +28,8 @@ def test():
 async def getCity(city:City):
     cityName = str(city.name)
     print(cityName)
-    res = await helps.myData(cityName)
-    return res
+    await helps.myData(cityName)
+    return "Done"
     
     
 

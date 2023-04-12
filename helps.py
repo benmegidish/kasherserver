@@ -1,35 +1,27 @@
 
 def myData(city):
 
-    from selenium import webdriver
     import time
     from bs4 import BeautifulSoup
     import telegramBot
-    from dotenv import load_dotenv
-    import os
+    import requests
 
-    load_dotenv()
-    driver = webdriver.Chrome(executable_path=os.getenv("EXECUTABLE_PATH"))
     url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/'
-    driver.maximize_window()
-    driver.get(url)
-    time.sleep(2)
-    content = driver.page_source.encode('utf-8').strip()
-    soup = BeautifulSoup(content,"lxml")
+    HEADERS = {'User-Agent': 'Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'}
+
+    content  = requests.get(url, headers=HEADERS)
+    soup = BeautifulSoup(content.text,"lxml")
     numOfResualts = soup.find('div' ,class_ = 'restaurant-info-top').text
-    sliceit = slice(6,10)
-    num =int(numOfResualts[sliceit].replace(' ',''))
+    sliced = slice(6,10)
+    num =int(numOfResualts[sliced].replace(' ',''))
     print("There are "+str(num)+" resualts found...")
     time.sleep(1)
     page = 1
     resNum = 0
     while resNum<num:
         url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/page-'+str(page)+'/'
-        driver.maximize_window()
-        driver.get(url)
-        time.sleep(2)
-        content = driver.page_source.encode('utf-8').strip()
-        soup = BeautifulSoup(content,"lxml")
+        content  = requests.get(url, headers=HEADERS)
+        soup = BeautifulSoup(content.text,"lxml")
         firstRes = soup.find_all("div" , class_="feature-column")
         for res in firstRes:
             name = res.find("div", class_="rest-title").text
@@ -39,5 +31,5 @@ def myData(city):
             time.sleep(1)
         page+=1
     telegramBot.newMessage('covered all data!')
-    driver.quit()
 
+myData("kiryat-malachi")
