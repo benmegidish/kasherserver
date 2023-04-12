@@ -18,6 +18,11 @@ def myData(city):
     time.sleep(1)
     page = 1
     resNum = 0
+    if num>20:
+        telegramBot.newMessage("there is a lot of data, showing only 30 resualts for now to save time")
+        telegramBot.newMessage("If you like to see more data contact developer")
+        time.sleep(1)
+        num = 20
     while resNum<num:
         url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/page-'+str(page)+'/'
         content  = requests.get(url, headers=HEADERS)
@@ -31,3 +36,5 @@ def myData(city):
             time.sleep(1)
         page+=1
     telegramBot.newMessage('covered all data!')
+
+myData("tel-aviv")
