@@ -25,10 +25,10 @@ class City(BaseModel):
 def test():
     return ('Hello there')
 @app.post("/data/")
-async def getCity(city:City):
+def getCity(city:City):
     cityName = str(city.name)
     print(cityName)
-    await helps.myData(cityName)
+    helps.myData(cityName)
     return "Done"
     
     
