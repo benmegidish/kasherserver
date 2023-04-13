@@ -9,7 +9,7 @@ from pydantic import BaseModel
 app = FastAPI()
 origins = [
     'https://kaherclient.netlify.app/',
-    'http://localhost:3000'
+    'http://localhost:3000/'
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -24,12 +24,18 @@ class City(BaseModel):
 @app.get('/')
 def test():
     return ('Hello there')
-@app.post("/data/")
-def getCity(city:City):
-    cityName = str(city.name)
+@app.post("/data/{city}")
+def getCity(city):
+    cityName = str(city)
     print(cityName)
     helps.myData(cityName)
     return "Done"
+# @app.post("/data/")
+# def getCity(city:City):
+#     cityName = str(city.name)
+#     print(cityName)
+#     helps.myData(cityName)
+#     return "Done"
     
     
 
