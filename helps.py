@@ -26,8 +26,10 @@ def myData(city):
     while resNum<num:
         url= 'https://www.rest.co.il/kosher-restaurants/'+city+'/kosher/page-'+str(page)+'/'
         content  = requests.get(url, headers=HEADERS)
+        time.sleep(1)
         soup = BeautifulSoup(content.text,"lxml")
         firstRes = soup.find_all("div" , class_="feature-column")
+        time.sleep(1)
         for res in firstRes:
             name = res.find("div", class_="rest-title").text
             resNum+=1
